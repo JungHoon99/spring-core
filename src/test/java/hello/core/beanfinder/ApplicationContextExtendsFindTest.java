@@ -1,7 +1,7 @@
 package hello.core.beanfinder;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FIxDiscountPolicy;
+import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
@@ -52,7 +52,7 @@ public class ApplicationContextExtendsFindTest {
     static class TestConfig {
         @Bean
         public DiscountPolicy fixedDiscountPolicy() {
-            return new FIxDiscountPolicy();
+            return new FixDiscountPolicy();
         }
 
         @Bean
