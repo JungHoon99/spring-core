@@ -1,0 +1,25 @@
+package hello.core.lifecycle;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+public class BeanLifeCycle {
+    @Test
+    void lifeCycle() {
+        ConfigurableApplicationContext ac = new org.springframework.context.annotation.AnnotationConfigApplicationContext(LifeCycleConfig.class);
+        NetworkClient networkClient = ac.getBean(NetworkClient.class);
+        ac.close();
+    }
+
+    @Configuration
+    static class LifeCycleConfig {
+        @Bean
+        public NetworkClient networkClient() {
+            NetworkClient networkClient = new NetworkClient();
+            networkClient.setUrl("http://localhost:8080");
+            return networkClient;
+        }
+    }
+}
